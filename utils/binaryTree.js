@@ -5,23 +5,25 @@ function TreeNode(val) {
 }
 
 function writeTree(root) {
-    var str = '';
-    return writeSelf(root, str);
+    return writeSelf(root, []);
 }
 
-function writeSelf(node, str) {
-    if (!node) {
-        return str;
+function writeSelf(node, arr) {
+    if (node === undefined) {
+        return arr;
     }
-    var output = str;
-    output += node.val;
-    if (node.left) {
-        output += writeSelf(node.left);
+    if (node === null) {
+        arr.push(null);
+        return;
     }
-    if (node.right) {
-        output += writeSelf(node.right);
+    arr.push(node.val);
+    if (node.left !== undefined) {
+        writeSelf(node.left, arr);
     }
-    return output;
+    if (node.right !== undefined) {
+        writeSelf(node.right, arr);
+    }
+    return arr;
 }
 
 function readTree(list) {
@@ -53,7 +55,10 @@ function insertNext(root, value) {
         root.right = insertion;
         return true;
     }
-    return root.right !== null && insertNext(root.right, value);
+    if (root.right !== null && insertNext(root.right, value)) {
+        return true;
+    }
+    return false;
 }
 
 module.exports = {

@@ -13,7 +13,7 @@ function writeSelf(node, arr) {
         return arr;
     }
     if (node === null) {
-        arr.push(null);
+        arr.push('#');
         return;
     }
     arr.push(node.val);
@@ -55,15 +55,62 @@ function insertNext(root, value) {
         root.right = insertion;
         return true;
     }
-    if (root.right !== null && insertNext(root.right, value)) {
-        return true;
+    return root.right !== null && insertNext(root.right, value);
+}
+
+function preOrder(root, path) {
+    if (root) {
+        path.push(root.val);
+    } else {
+        return;
     }
-    return false;
+    preOrder(root.left, path);
+    preOrder(root.right, path);
+}
+
+function inOrder(root, path) {
+    if (!root) {
+        return;
+    }
+    inOrder(root.left, path);
+    path.push(root.val);
+    inOrder(root.right, path);
+}
+
+function postOrder(root, path) {
+    if (!root) {
+        return;
+    }
+    postOrder(root.left, path);
+    postOrder(root.right, path);
+    path.push(root.val);
+}
+
+function bfs(root, path) {
+    if (root === null) {
+        return;
+    }
+    var q = [];
+    q.push(root);
+    while (q.length) {
+        var node = q.shift();
+        path.push(node.val);
+        if (node.left) {
+            q.push(node.left);
+        }
+        if (node.right) {
+            q.push(node.right);
+        }
+    }
 }
 
 module.exports = {
     insertNext: insertNext,
     readTree: readTree,
     TreeNode: TreeNode,
-    writeTree: writeTree
+    writeTree: writeTree,
+    preOrder: preOrder,
+    inOrder: inOrder,
+    postOrder: postOrder,
+    bfs: bfs
 };

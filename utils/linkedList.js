@@ -23,10 +23,11 @@ function printList(head) {
         data.push(current.data);
         current = current.next;
     }
-    console.log('<' + data.join(',') + '>');
+    console.log('(' + data.join(', ') + ')');
 }
 
 module.exports = {
     linkedListFromArray: linkedListFromArray,
-    printList: printList
+    printList: printList,
+    Node: Node
 };

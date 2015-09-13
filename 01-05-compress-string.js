@@ -38,4 +38,4 @@ console.log(compress('aabddddddddddddddddddddcccccaaa'));
 console.log(compress('aab'));
 console.log(compress('aa'));
 console.log(compress('aabbbxxxxxxxxds'));
-console.log(compress('a'));
+console.log(compress('head'));

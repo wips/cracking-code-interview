@@ -16,4 +16,4 @@ function isAllCharsAreUnique(input) {
 console.log(isAllCharsAreUnique('abgfgfg'));
 console.log(isAllCharsAreUnique('abf12g'));
 console.log(isAllCharsAreUnique(''));
-console.log(isAllCharsAreUnique('a'));
+console.log(isAllCharsAreUnique('head'));
